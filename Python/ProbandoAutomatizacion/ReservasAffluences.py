@@ -29,12 +29,7 @@ def main():
 def monday():
 
     # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
+    hour(9)
 
     # Dia
     time.sleep(0.2)
@@ -212,7 +207,18 @@ def before_book():
     py.scroll(20)
 
 
+def hour(n):
+    time.sleep(0.2)
+    py.moveRel(-300, 0)
+    py.leftClick()
+    py.scroll(-400 * n)
+    py.leftClick()
+    py.scroll(20)
+
+
 # main()
 # time.sleep(4)
 # print(py.position())
-main()
+# main()
+time.sleep(4)
+monday()
