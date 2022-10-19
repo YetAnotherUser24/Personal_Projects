@@ -6,8 +6,8 @@ def main():
 
     before_book()
 
-    day = time.localtime().tm_wday
-
+    #day = time.localtime().tm_wday
+    day = 0
     if (day == 0):
         monday()
     elif (day == 1):
@@ -29,15 +29,19 @@ def main():
 def monday():
 
     # Hora
-    hour(9)
+    hour(11.5)
 
     # Dia
+    d = time.localtime().tm_mday
+    d = str(d)
+    x, y = py.locateCenterOnScreen("dias/"+d+".png")
+
     time.sleep(0.2)
     py.moveRel(-340, 0)
     py.leftClick()
 
     time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
+    py.moveTo(x, y, 0.5)
     py.leftClick()
     time.sleep(1)
     py.scroll(-900)
@@ -208,10 +212,12 @@ def before_book():
 
 
 def hour(n):
+    n = int(4*(n+1))
     time.sleep(0.2)
     py.moveRel(-300, 0)
     py.leftClick()
-    py.scroll(-400 * n)
+    py.moveRel(0, -350, 1)
+    py.scroll(-29 * (n-1))
     py.leftClick()
     py.scroll(20)
 
@@ -219,6 +225,6 @@ def hour(n):
 # main()
 # time.sleep(4)
 # print(py.position())
-# main()
-time.sleep(4)
-monday()
+main()
+# time.sleep(4)
+# monday()
