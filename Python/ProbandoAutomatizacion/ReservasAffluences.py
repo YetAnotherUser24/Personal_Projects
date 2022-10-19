@@ -34,14 +34,14 @@ def monday():
     # Dia
     d = time.localtime().tm_mday
     d = str(d)
-    x, y = py.locateCenterOnScreen("dias/"+d+".png")
+    coor = py.locateCenterOnScreen("dias/"+d+".png")
 
     time.sleep(0.2)
     py.moveRel(-340, 0)
     py.leftClick()
 
     time.sleep(0.2)
-    py.moveTo(x, y, 0.5)
+    py.moveTo(coor, 0.5)
     py.leftClick()
     time.sleep(1)
     py.scroll(-900)
@@ -225,6 +225,10 @@ def hour(n):
 # main()
 # time.sleep(4)
 # print(py.position())
-main()
+# main()
 # time.sleep(4)
 # monday()
+time.sleep(4)
+re = py.locateCenterOnScreen(
+    "D:\Personal Projects\Personal_Projects\Python\ProbandoAutomatizacion\edit.PNG", confidence=0.7)
+print(re)
