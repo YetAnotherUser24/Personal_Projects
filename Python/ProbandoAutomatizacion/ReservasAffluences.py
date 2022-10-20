@@ -2,171 +2,60 @@ import time
 import pyautogui as py
 
 
-def main():
-
-    before_book()
-
-    #day = time.localtime().tm_wday
-    day = 0
+def monday(day, h=1):
     if (day == 0):
-        monday()
-    elif (day == 1):
-        tuesday()
-    elif (day == 2):
-        wednesday()
-    elif (day == 3):
-        thursday()
-    elif (day == 4):
-        friday()
-    elif (day == 5):
-        saturday()
+        return 0
 
-    after_book()
-
-    return 0
+    hour(h)
+    day()
 
 
-def monday():
+def tuesday(day, h=1):
+    if (day == 1):
+        return 0
 
-    # Hora
-    hour(11.5)
-
-    # Dia
-    d = time.localtime().tm_mday
-    d = str(d)
-    coor = py.locateCenterOnScreen("dias/"+d+".png")
-
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(coor, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    hour(h)
+    day()
 
 
-def tuesday():
+def wednesday(day, h=1):
+    if (day == 2):
+        return 0
 
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    hour(h)
+    day()
 
 
-def wednesday():
+def thursday(day, h=1):
+    if (day == 3):
+        return 0
 
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    hour(h)
+    day()
 
 
-def thursday():
+def friday(day, h=1):
+    if (day == 4):
+        return 0
 
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    hour(h)
+    day()
 
 
-def friday():
+def saturday(day, h=1):
+    if (day == 5):
+        return 0
 
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    hour(h)
+    day()
 
 
-def saturday():
+def sunday(day, h=1):
+    if (day == 6):
+        return 0
 
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    hour(h)
+    day()
 
 
 def after_book():
@@ -198,7 +87,7 @@ def before_book():
     py.write("https://affluences.com/biblioteca-utec/reservation")
     py.press("enter")
 
-    py.moveTo(1523, 880, 2.5)
+    py.moveTo(1523, 880, 3)
     py.leftClick()
     py.scroll(-40)
     py.leftClick()
@@ -222,13 +111,48 @@ def hour(n):
     py.scroll(20)
 
 
-# main()
-# time.sleep(4)
-# print(py.position())
-# main()
-# time.sleep(4)
-# monday()
-time.sleep(4)
-re = py.locateCenterOnScreen(
-    "D:\Personal Projects\Personal_Projects\Python\ProbandoAutomatizacion\edit.PNG", confidence=0.7)
-print(re)
+def day():
+
+    time.sleep(0.2)
+    py.moveRel(-340, 360)
+    py.leftClick()
+
+    mes = time.localtime().tm_mon
+
+    if (mes in [4, 6, 9, 11]):
+        d = (time.localtime().tm_mday + 1) % 31
+    else:
+        d = (time.localtime().tm_mday + 1) % 32
+
+    d = str(d)
+    ruta = "D:\Personal_Projects\Python\ProbandoAutomatizacion\dias\\" + d + ".png"
+    coor = py.locateCenterOnScreen(ruta, confidence=0.9)
+
+    time.sleep(0.2)
+    py.moveTo(coor)
+    py.leftClick()
+    time.sleep(1)
+    py.scroll(-900)
+    py.moveTo(1706, 636, 0.5)
+    py.leftClick()
+
+
+def main():
+
+    before_book()
+
+    day = time.localtime().tm_wday
+    monday(day, 11)
+    tuesday(day, 9)
+    wednesday(day, 10)
+    thursday(day, 15)
+    friday(day, 9)
+    saturday(day)
+    sunday(day, 15)
+
+    after_book()
+
+    return 0
+
+
+main()
