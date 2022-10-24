@@ -2,69 +2,6 @@ import time
 import pyautogui as py
 
 
-def monday(d, h=1, correo="samir.suarez"):
-    if (d == 0):
-        hour(h)
-        day()
-        after_book(correo)
-
-    return 0
-
-
-def tuesday(d, h=1, correo="samir.suarez"):
-    if (d == 1):
-        hour(h)
-        day()
-        after_book(correo)
-
-    return 0
-
-
-def wednesday(d, h=1, correo="samir.suarez"):
-    if (d == 2):
-        hour(h)
-        day()
-        after_book(correo)
-
-    return 0
-
-
-def thursday(d, h=1, correo="samir.suarez"):
-    if (d == 3):
-        hour(h)
-        day()
-        after_book(correo)
-
-    return 0
-
-
-def friday(d, h=1, correo="samir.suarez"):
-    if (d == 4):
-        hour(h)
-        day()
-        after_book(correo)
-
-    return 0
-
-
-def saturday(d, h=1, correo="samir.suarez"):
-    if (d == 5):
-        hour(h)
-        day()
-        after_book(correo)
-
-    return 0
-
-
-def sunday(d, h=1, correo="samir.suarez"):
-    if (d == 6):
-        hour(h)
-        day()
-        after_book(correo)
-
-    return 0
-
-
 def after_book(correo):
 
     # Moverse y registrar el apartado de correo
@@ -72,15 +9,15 @@ def after_book(correo):
     py.scroll(-1000)
     py.moveTo(694, 205, 0.1)
     py.leftClick()
-    py.write(correo, 0.02)
+    py.write(correo, 0.01)
     py.hotkey("altright", "q")
-    py.write("utec.edu.pe", 0.02)
+    py.write("utec.edu.pe", 0.01)
     time.sleep(0.1)
 
     # Moverse y registrar la cantidad de personas
     py.moveRel(0, 150)
     py.leftClick()
-    py.write("2", 0.02)
+    py.write("2", 0.01)
     time.sleep(0.1)
 
     # Aceptar los terminos y condiciones
@@ -92,7 +29,7 @@ def after_book(correo):
     py.leftClick()
 
     # Cerrar
-    time.sleep(5)
+    time.sleep(1)
     py.hotkey("ctrl", "w")
 
 
@@ -135,7 +72,7 @@ def hour(n):
     time.sleep(0.2)
     py.moveRel(-300, 0)
     py.leftClick()
-    py.moveRel(0, -350, 0.2)
+    py.moveRel(0, -350)
     py.scroll(-29 * (n-1))
     py.leftClick()
     py.scroll(20)
@@ -156,44 +93,50 @@ def day():
 
     d = str(d)
     ruta = "D:\Personal_Projects\Python\ProbandoAutomatizacion\dias\\" + d + ".png"
-    coor = py.locateCenterOnScreen(ruta, confidence=0.9)
+    coor = py.locateCenterOnScreen(ruta, confidence=0.8)
 
     # Seleccionar día
-    time.sleep(0.2)
+    time.sleep(0.1)
     py.moveTo(coor)
     py.leftClick()
-    time.sleep(0.2)
+    time.sleep(0.1)
 
     # Clickear boton BOOK
+    time.sleep(1)
     py.scroll(-500)
-    py.moveTo(1705, 730, 0.5)
+    py.moveTo(1705, 730)
     py.leftClick()
+
+
+def weekday(diasem, hora, correo="samir.suarez"):
+    dic = {"mo": 0, "lu": 0, "tu": 1, "ma": 1, "we": 2, "mi": 2,
+           "th": 3, "ju": 3, "fr": 4, "vi": 4, "sa": 5, "su": 6, "do": 6}
+
+    w = (time.localtime().tm_wday + 1) % 7
+
+    if (dic[diasem] == w):
+        before_book()
+        hour(hora)
+        day()
+        after_book(correo)
 
 
 def main():
-
     correos = ["samir.suarez", "carlos.rojas", "fabiola.fuentes"]
-    before_book()
 
-    #day = time.localtime().tm_wday
-    day = 4
-    monday(day, 11)
-    monday(day, 3, correos[2])
-    tuesday(day, 9)
-    wednesday(day, 10)
-    thursday(day, 15)
-    friday(day, 9)
-    saturday(day)
-    sunday(day, 15)
+    weekday("mo", 15)
+    weekday("tu", 11)
+    weekday("tu", 16, correos[2])
+    weekday("we", 9)
+    weekday("we", 11, correos[2])
+    weekday("th", 10)
+    weekday("th", 17, correos[2])
+    weekday("fr", 15)
+    weekday("sa", 9)
+    weekday("sa", 11, correos[2])
 
+    print("Ejecucion terminada con exito!!!")
     return 0
 
 
-time.sleep(5)
 main()
-# time.sleep(4)
-#
-# py.scroll(-500)
-#
-# time.sleep(4)
-# print(py.position())
