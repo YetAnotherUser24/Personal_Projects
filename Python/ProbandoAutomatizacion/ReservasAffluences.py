@@ -34,7 +34,8 @@ def monday():
     # Dia
     d = time.localtime().tm_mday
     d = str(d)
-    coor = py.locateCenterOnScreen("dias/"+d+".png")
+    coor = py.locateCenterOnScreen(
+        "D:\Personal_Projects\Python\ProbandoAutomatizacion\dias\\"+d+".png")
 
     time.sleep(0.2)
     py.moveRel(-340, 0)
@@ -50,123 +51,23 @@ def monday():
 
 
 def tuesday():
-
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    return 0
 
 
 def wednesday():
-
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    return 0
 
 
 def thursday():
-
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    return 0
 
 
 def friday():
-
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    return 0
 
 
 def saturday():
-
-    # Hora
-    time.sleep(0.2)
-    py.moveRel(-300, 0)
-    py.leftClick()
-    py.scroll(-850-200)
-    py.leftClick()
-    py.scroll(20)
-
-    # Dia
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(391, 662, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
+    return 0
 
 
 def after_book():
@@ -222,6 +123,21 @@ def hour(n):
     py.scroll(20)
 
 
+def dia():
+
+    d = time.localtime().tm_mday
+    d = str(d)
+    coor = py.locateCenterOnScreen(
+        "D:\Personal_Projects\Python\ProbandoAutomatizacion\dias\\"+d+".png")
+
+    time.sleep(0.2)
+    py.moveRel(-340, 0)
+    py.leftClick()
+    time.sleep(0.2)
+    py.moveTo(coor, 0.5)
+    py.leftClick()
+
+
 # main()
 # time.sleep(4)
 # print(py.position())
@@ -230,5 +146,5 @@ def hour(n):
 # monday()
 time.sleep(4)
 re = py.locateCenterOnScreen(
-    "D:\Personal Projects\Personal_Projects\Python\ProbandoAutomatizacion\edit.PNG", confidence=0.7)
+    "D:\Personal Projects\Personal_Projects\Python\ProbandoAutomatizacion\\edit.png", confidence=0.7)
 print(re)
