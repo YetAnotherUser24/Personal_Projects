@@ -4,78 +4,8 @@ import pyautogui as py
 
 def after_book(correo):
 
-<<<<<<< HEAD
-    before_book()
-
-    #day = time.localtime().tm_wday
-    day = 0
-    if (day == 0):
-        monday()
-    elif (day == 1):
-        tuesday()
-    elif (day == 2):
-        wednesday()
-    elif (day == 3):
-        thursday()
-    elif (day == 4):
-        friday()
-    elif (day == 5):
-        saturday()
-
-    after_book()
-
-    return 0
-
-
-def monday():
-
-    # Hora
-    hour(11.5)
-
-    # Dia
-    d = time.localtime().tm_mday
-    d = str(d)
-    coor = py.locateCenterOnScreen(
-        "D:\Personal_Projects\Python\ProbandoAutomatizacion\dias\\"+d+".png")
-
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-
-    time.sleep(0.2)
-    py.moveTo(coor, 0.5)
-    py.leftClick()
-    time.sleep(1)
-    py.scroll(-900)
-    py.moveTo(1706, 636, 0.5)
-    py.leftClick()
-
-
-def tuesday():
-    return 0
-
-
-def wednesday():
-    return 0
-
-
-def thursday():
-    return 0
-
-
-def friday():
-    return 0
-
-
-def saturday():
-    return 0
-
-
-def after_book():
-=======
     # Moverse y registrar el apartado de correo
     time.sleep(2)
->>>>>>> d5e752672bd6bca29a124d48a85738ed2aebcc09
     py.scroll(-1000)
     py.moveTo(694, 205, 0.1)
     py.leftClick()
@@ -148,33 +78,6 @@ def hour(n):
     py.scroll(20)
 
 
-<<<<<<< HEAD
-def dia():
-
-    d = time.localtime().tm_mday
-    d = str(d)
-    coor = py.locateCenterOnScreen(
-        "D:\Personal_Projects\Python\ProbandoAutomatizacion\dias\\"+d+".png")
-
-    time.sleep(0.2)
-    py.moveRel(-340, 0)
-    py.leftClick()
-    time.sleep(0.2)
-    py.moveTo(coor, 0.5)
-    py.leftClick()
-
-
-# main()
-# time.sleep(4)
-# print(py.position())
-# main()
-# time.sleep(4)
-# monday()
-time.sleep(4)
-re = py.locateCenterOnScreen(
-    "D:\Personal Projects\Personal_Projects\Python\ProbandoAutomatizacion\\edit.png", confidence=0.7)
-print(re)
-=======
 def day():
 
     time.sleep(0.2)
@@ -237,4 +140,3 @@ def main():
 
 
 main()
->>>>>>> d5e752672bd6bca29a124d48a85738ed2aebcc09
