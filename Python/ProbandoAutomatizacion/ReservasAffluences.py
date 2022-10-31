@@ -41,7 +41,16 @@ def before_book():
     py.press("enter")
 
     # Selección del cubículo E805
-    py.moveTo(1523, 880, 3)
+
+    coor = None
+    ruta = "D:\Personal_Projects\Python\ProbandoAutomatizacion\dias\\Name.png"
+    while coor == None:
+        time.sleep(0.001)
+        coor = py.locateCenterOnScreen(ruta, confidence=0.8)
+    #py.moveTo(1523, 880, 3)
+
+    py.moveTo(coor)
+    time.sleep(0.6)
     py.leftClick()
 
     n = 5
@@ -50,6 +59,7 @@ def before_book():
     py.moveRel(0, -350, 0.2)
     py.scroll(-29 * (n-1))
     py.leftClick()
+
     py.scroll(20)
 
     # py.scroll(-40)
@@ -87,25 +97,36 @@ def day():
     mes = time.localtime().tm_mon
 
     if (mes in [4, 6, 9, 11]):
-        d = (time.localtime().tm_mday + 1) % 31
+        d = 1 + (time.localtime().tm_mday % 30)
     else:
-        d = (time.localtime().tm_mday + 1) % 32
+        d = 1 + (time.localtime().tm_mday % 31)
 
     d = str(d)
     ruta = "D:\Personal_Projects\Python\ProbandoAutomatizacion\dias\\" + d + ".png"
-    coor = py.locateCenterOnScreen(ruta, confidence=0.8)
+    coor = None
+    while coor == None:
+        time.sleep(0.001)
+        coor = py.locateCenterOnScreen(ruta, confidence=0.8)
 
     # Seleccionar día
     time.sleep(0.1)
     py.moveTo(coor)
     py.leftClick()
     time.sleep(0.1)
-
     # Clickear boton BOOK
-    time.sleep(1)
     py.scroll(-500)
-    py.moveTo(1705, 730)
+    ruta = "D:\Personal_Projects\Python\ProbandoAutomatizacion\dias\Book.png"
+    coor = None
+    while coor == None:
+        time.sleep(0.001)
+        coor = py.locateCenterOnScreen(ruta, confidence=0.8)
+
+    py.moveTo(coor)
     py.leftClick()
+
+    # time.sleep(0.5)
+    #py.moveTo(1705, 730)
+    # py.leftClick()
 
 
 def weekday(diasem, hora, correo="samir.suarez"):
@@ -130,7 +151,7 @@ def main():
     weekday("we", 9)
     weekday("we", 11, correos[2])
     weekday("th", 10)
-    weekday("th", 17, correos[2])
+    weekday("th", 17, correos[1])
     weekday("fr", 15)
     weekday("sa", 9)
     weekday("sa", 11, correos[2])
